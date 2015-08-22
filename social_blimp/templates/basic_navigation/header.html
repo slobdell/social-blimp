@@ -1,0 +1,102 @@
+{% load staticfiles %}
+
+<header class="header fixed clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <!-- header-left start -->
+                <!-- ================ -->
+                <div class="header-left clearfix">
+
+                    <!-- logo -->
+                    <div class="logo">
+<a href="."><img id="logo" style="width: 100px;" src="{% static 'images/exercise_lib_logo.png' %}" alt="Exercise Library"></a>
+                    </div>
+
+                    <!-- name-and-slogan -->
+                    <div class="site-slogan">
+                        A Comprehensive Exercise Library
+                    </div>
+
+                </div>
+                <!-- header-left end -->
+
+            </div>
+            <div class="col-md-9">
+
+                <!-- header-right start -->
+                <!-- ================ -->
+                <div class="header-right clearfix">
+
+                    <!-- main-navigation start -->
+                    <!-- ================ -->
+                    <div class="main-navigation animated">
+
+                        <!-- navbar start -->
+                        <!-- ================ -->
+                        <nav class="navbar navbar-default" role="navigation">
+                            <div class="container-fluid">
+
+                                <!-- Toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-left">
+
+
+                                        <!-- SBL START -->
+                                        <li class="dropdown" style="">
+<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Find By Body Part</a>
+                                            <ul class="dropdown-menu">
+
+                                                {% for top_level_muscle, muscle_dict in muscle_tree.items %}
+                                                    <li class="dropdown" style="">
+<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">{{ top_level_muscle }}</a>
+                                                        <ul class="dropdown-menu">
+                                                            {% for low_level_muscle, muscle_list in muscle_dict.items %}
+                                                            <li class="dropdown">
+                                                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">{{ low_level_muscle }}</a>
+                                                                <ul class="dropdown-menu">
+                                                                    {% for individual_muscle in muscle_list %}
+                                                                        <li><a href="/muscle/{{ individual_muscle.1 }}/">{{ individual_muscle.0 }}</a></li>
+                                                                    {% endfor %}
+                                                                </ul>
+                                                            </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </li>
+                                                {% endfor %}
+
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="/">Home</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </nav>
+                        <!-- navbar end -->
+
+                    </div>
+                    <!-- main-navigation end -->
+
+                </div>
+                <!-- header-right end -->
+
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header end -->

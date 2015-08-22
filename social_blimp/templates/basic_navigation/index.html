@@ -1,0 +1,44 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+    <head>
+    <title>
+    {% block title %}
+    Home
+    {% endblock %}
+    | Exercise Library
+    </title>
+    {% include "basic_navigation/head.html" %}
+    </head>
+    {% load staticfiles %}
+    <!-- http://getbootstrap.com/examples/grid/ -->
+    <body class="front no-trans">
+        {% include "underscore_templates/main.html" %}
+        {% if admin %}
+            {% include "underscore_templates/admin.html" %}
+        {% endif %}
+        <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+
+        <div class="page-wrapper">
+            {% include "basic_navigation/header.html" %}
+            {% include "basic_navigation/workout-gen-ad.html" %}
+            {% include "basic_navigation/search.html" %}
+            {% block content %}
+                {% include "basic_navigation/content.html" %}
+            {% endblock %}
+
+            {% include "basic_navigation/banner.html" %}
+            {% include "basic_navigation/footer.html" %}
+        </div>
+        {% include "mixpanel.html" %}
+        {% include "basic_navigation/javascript_includes.html" %}
+        {% include "google_analytics.html" %}
+        {% block javascript %}
+        {% endblock %}
+    </body>
+</html>

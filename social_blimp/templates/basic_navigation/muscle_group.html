@@ -1,0 +1,19 @@
+{% extends "basic_navigation/index.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="section gray-bg text-muted footer-top clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+            <div class="box-style-2 white-bg object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="200" style="padding: 10px;">
+                <h3>{{ muscle_name }}</h3>
+                {% for exercise in exercises %}
+                    <a href="/exercise/{{ exercise.canonical_name}}/">{{ exercise.name }}</a><br/>
+                {% endfor %}
+                </div>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div> <!-- section -->
+{% endblock %}
